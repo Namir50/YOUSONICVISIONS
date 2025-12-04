@@ -39,7 +39,7 @@ const Contact = () => {
         setAlertMessage(null);
 
         try {
-            const response = await fetch('http://localhost:8000/api/expand-vibe', {
+            const response = await fetch('/api/expand-vibe', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -82,7 +82,7 @@ const Contact = () => {
         setAlertMessage(null);
 
         try {
-            const response = await fetch('http://localhost:8000/api/submit-contact', {
+            const response = await fetch('/api/submit-contact', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
