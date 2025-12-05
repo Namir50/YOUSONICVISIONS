@@ -27,7 +27,7 @@ const Navbar = () => {
                             <Aperture className="text-white w-6 h-6" />
                         </div>
                         <span className="font-black text-2xl tracking-tighter text-white uppercase italic">
-                            YOUSONICVISION<span className="text-[#3F00FF]">.AI</span>
+                            YOUSONICVISIONS
                         </span>
                     </div>
 

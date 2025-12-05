@@ -188,7 +188,7 @@ const Contact = () => {
                                     <Mail className="text-indigo-400 mt-1 w-6 h-6" />
                                     <div>
                                         <p className="text-xs font-mono text-zinc-500 uppercase">Communication Channel</p>
-                                        <p className="font-bold text-white text-xl">hello@yousonicvision.ai</p>
+                                        <p className="font-bold text-white text-xl">hello@yousonicvisions.com</p>
                                     </div>
                                 </div>
                                 <div className="flex items-start gap-4">

@@ -112,7 +112,7 @@ async def submit_contact(request: dict):
     smtp_port = int(os.getenv("SMTP_PORT", "587"))
     smtp_user = os.getenv("SMTP_USER", "")
     smtp_password = os.getenv("SMTP_PASSWORD", "")
-    company_email = os.getenv("COMPANY_EMAIL", "hello@yousonicvision.ai")
+    company_email = os.getenv("COMPANY_EMAIL", "hello@yousonicvisions.com")
     
     if not smtp_user or not smtp_password:
         raise HTTPException(status_code=500, detail="Email configuration not set")
@@ -151,7 +151,7 @@ AI Generated Treatment:
 {treatment}
 
 ---
-Submitted via YOUSONICVISION.AI Contact Form
+Submitted via YOUSONICVISIONS Contact Form
 """
         company_msg.attach(MIMEText(company_body, "plain"))
         
@@ -159,12 +159,12 @@ Submitted via YOUSONICVISION.AI Contact Form
         user_msg = MIMEMultipart()
         user_msg["From"] = smtp_user
         user_msg["To"] = user_email
-        user_msg["Subject"] = "Thank you for contacting YOUSONICVISION.AI"
+        user_msg["Subject"] = "Thank you for contacting YOUSONICVISIONS"
         
         user_body = f"""
 Hi {user_name},
 
-Thank you for reaching out to YOUSONICVISION.AI! We have received your submission with the following details:
+Thank you for reaching out to YOUSONICVISIONS! We have received your submission with the following details:
 
 Name: {user_name}
 Email: {user_email}
@@ -182,7 +182,7 @@ AI Generated Treatment:
 We will review your request and connect with you shortly.
 
 Best regards,
-The YOUSONICVISION.AI Team
+The YOUSONICVISIONS Team
 
 ---
 This is an automated confirmation email.
