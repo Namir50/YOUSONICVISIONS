@@ -17,7 +17,7 @@ const MonetizationBanner = () => {
                     <h2 className="text-4xl md:text-6xl font-black text-white leading-none mb-6">
                         COPYRIGHT <br /> CLEAR.
                     </h2>
-                    <p className="text-xl text-indigo-100 font-medium leading-relaxed max-w-xl">
+                    <p className="text-xl text-indigo-100 font-medium leading-relaxed">
                         Don't get demonetized. Our AI generates 100% original imagery. You own the assets. You keep the royalties. Realism without the risk.
                     </p>
                 </div>
