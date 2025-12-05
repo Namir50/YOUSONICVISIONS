@@ -168,34 +168,34 @@ const Contact = () => {
             <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#3F00FF] to-transparent"></div>
 
             <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div className="bg-zinc-900 border border-zinc-800 p-8 md:p-16 relative">
+                <div className="bg-zinc-900 border border-zinc-800 p-4 sm:p-8 md:p-16 relative overflow-hidden">
                     <div className="absolute top-0 right-0 p-4">
                         <div className="grid grid-cols-2 gap-1">
                             {[...Array(4)].map((_, i) => <div key={i} className="w-1 h-1 bg-[#3F00FF]"></div>)}
                         </div>
                     </div>
 
-                    <div className="grid md:grid-cols-2 gap-16">
-                        <div>
-                            <h2 className="text-5xl font-black text-white mb-6 uppercase leading-none">FilL YOUR DETAILS</h2>
-                            <p className="text-zinc-400 mb-10 text-lg leading-relaxed">
+                    <div className="flex flex-col md:grid md:grid-cols-2 gap-8 md:gap-16">
+                        <div className="text-left">
+                            <h2 className="text-4xl md:text-5xl font-black text-white mb-6 uppercase leading-none">FilL YOUR DETAILS</h2>
+                            <p className="text-zinc-400 mb-10 text-base md:text-lg leading-relaxed">
                                 Fill the parameters. We process the request and will connect with you. <br />
                                 Tech. Reliable. Cost-effective.
                             </p>
 
-                            <div className="space-y-8">
+                            <div className="space-y-6 md:space-y-8">
                                 <div className="flex items-start gap-4">
-                                    <Mail className="text-indigo-400 mt-1 w-6 h-6" />
-                                    <div>
+                                    <Mail className="text-indigo-400 mt-1 w-6 h-6 flex-shrink-0" />
+                                    <div className="text-left">
                                         <p className="text-xs font-mono text-zinc-500 uppercase">Communication Channel</p>
-                                        <p className="font-bold text-white text-xl">hello@yousonicvisions.com</p>
+                                        <p className="font-bold text-white text-lg md:text-xl break-words">hello@yousonicvisions.com</p>
                                     </div>
                                 </div>
                                 <div className="flex items-start gap-4">
-                                    <Music className="text-indigo-400 mt-1 w-6 h-6" />
-                                    <div>
+                                    <Music className="text-indigo-400 mt-1 w-6 h-6 flex-shrink-0" />
+                                    <div className="text-left">
                                         <p className="text-xs font-mono text-zinc-500 uppercase">Base of Operations</p>
-                                        <p className="font-bold text-white text-xl">Mumbai, India</p>
+                                        <p className="font-bold text-white text-lg md:text-xl">Mumbai, India</p>
                                     </div>
                                 </div>
                             </div>
