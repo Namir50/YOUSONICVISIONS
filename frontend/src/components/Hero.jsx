@@ -106,7 +106,7 @@ const Hero = () => {
                         Initialize Project
                     </a>
                     <a href="#portfolio" className="group px-8 py-5 border-2 border-zinc-700 text-white font-bold text-lg uppercase tracking-wider hover:border-indigo-400 hover:text-indigo-400 transition-all flex items-center justify-center gap-2">
-                        <Play className="w-5 h-5 fill-current" /> Showreel
+                        <Play className="w-5 h-5 fill-current" /> Demo
                     </a>
                 </div>
 

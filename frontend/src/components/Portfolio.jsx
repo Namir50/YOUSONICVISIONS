@@ -23,12 +23,9 @@ const Portfolio = () => {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-4">
                     <div>
-                        <span className="bg-white text-black px-2 py-1 font-mono text-xs font-bold uppercase mb-2 inline-block">Case Studies</span>
-                        <h2 className="text-5xl font-black text-white uppercase tracking-tighter">Selected Output</h2>
+                        <span className="bg-white text-black px-2 py-1 font-mono text-xs font-bold uppercase mb-2 inline-block">Ideas</span>
+                        <h2 className="text-5xl font-black text-white uppercase tracking-tighter">Our Projects</h2>
                     </div>
-                    <button className="flex items-center gap-2 text-white hover:text-indigo-400 transition-colors uppercase font-bold tracking-widest text-sm group">
-                        All Projects <MoveRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                    </button>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-4">

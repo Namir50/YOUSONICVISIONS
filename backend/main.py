@@ -49,7 +49,7 @@ async def expand_vibe(request: VibeRequest):
     user_query = f'Expand the following short-form visual prompt for a music video into a detailed, three-paragraph visual treatment description suitable for a high-end music video, focusing on lighting, composition, and emotional tone: "{request.vibe_description}"'
     system_prompt = "You are a senior AI Visual Director for a music video production studio. Generate a high-quality, inspiring, and technically focused visual treatment in exactly three distinct paragraphs, separated by newlines. Do not include any titles, headers, or introductory/closing remarks."
     
-    # Gemini API endpoint - using Gemini 2.0 Flash Experimental
+    # Gemini API endpoint - using Gemini 2.5 Flash
     api_url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={api_key}"
 
     
