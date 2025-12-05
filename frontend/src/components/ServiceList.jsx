@@ -48,7 +48,10 @@ const ServiceList = () => {
                                     </li>
                                 ))}
                             </ul>
-                            <a href="#contact" className="block w-full py-4 bg-black text-white font-bold text-center uppercase tracking-widest hover:bg-[#3F00FF] transition-colors shadow-[0_4px_0_0_#3F00FF] hover:shadow-none">
+                            <a
+                                href={`#contact?videoType=${service.name.toUpperCase().replace(/ /g, '_')}`}
+                                className="block w-full py-4 bg-black text-white font-bold text-center uppercase tracking-widest hover:bg-[#3F00FF] transition-colors shadow-[0_4px_0_0_#3F00FF] hover:shadow-none"
+                            >
                                 Select
                             </a>
                         </div>

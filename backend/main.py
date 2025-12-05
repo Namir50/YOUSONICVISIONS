@@ -102,7 +102,7 @@ async def submit_contact(request: dict):
     from email.mime.multipart import MIMEMultipart
     
     # Validate required fields
-    required_fields = ["name", "email", "phone", "duration", "video_idea"]
+    required_fields = ["name", "email", "phone", "duration", "video_type", "video_idea"]
     for field in required_fields:
         if not request.get(field):
             raise HTTPException(status_code=400, detail=f"{field} is required")
@@ -124,6 +124,7 @@ async def submit_contact(request: dict):
         phone = request.get("phone")
         label_name = request.get("label_name", "N/A")
         duration = request.get("duration")
+        video_type = request.get("video_type")
         video_idea = request.get("video_idea")
         treatment = request.get("generated_treatment", "Not generated")
         
@@ -141,6 +142,7 @@ Email: {user_email}
 Phone: {phone}
 Label Name: {label_name}
 Song Duration: {duration}
+Video Type: {video_type}
 
 Video Idea / Visual Data:
 {video_idea}
@@ -169,6 +171,7 @@ Email: {user_email}
 Phone: {phone}
 Label Name: {label_name}
 Song Duration: {duration}
+Video Type: {video_type}
 
 Video Idea / Visual Data:
 {video_idea}

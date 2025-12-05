@@ -34,7 +34,7 @@ const Benefits = () => {
                         num="02"
                         icon={Cpu}
                         title="Infinite Scale"
-                        desc="Want a cast of thousands? A city in the clouds? Physics-defying transitions? The engine doesn't have a budget cap."
+                        desc="Want a cast of thousands? A city in the clouds? Physics-defying transitions? We will do it for you."
                     />
                     <FeatureCard
                         num="03"

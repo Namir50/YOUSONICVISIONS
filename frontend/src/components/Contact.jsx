@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { Mail, Music, Loader } from 'lucide-react';
 import CustomAlert from './CustomAlert';
 
@@ -7,6 +7,7 @@ const Contact = () => {
         name: '',
         label_name: '',
         duration: '',
+        video_type: '',
         email: '',
         phone: '',
         video_idea: ''
@@ -18,6 +19,45 @@ const Contact = () => {
     const [alertType, setAlertType] = useState('success');
 
     const handleAlertClose = useCallback(() => setAlertMessage(null), []);
+
+    // Read video type from URL hash and scroll to contact section
+    useEffect(() => {
+        const handleHashChange = () => {
+            const hash = window.location.hash;
+
+            // Check if hash contains contact with parameters
+            if (hash.includes('#contact')) {
+                const params = new URLSearchParams(hash.split('?')[1]);
+                const videoType = params.get('videoType');
+
+                if (videoType) {
+                    // Update form data with video type
+                    setFormData(prev => ({
+                        ...prev,
+                        video_type: videoType.replace(/_/g, ' ')
+                    }));
+                }
+
+                // Scroll to contact section
+                setTimeout(() => {
+                    const contactSection = document.getElementById('contact');
+                    if (contactSection) {
+                        contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }, 100);
+            }
+        };
+
+        // Handle on mount
+        handleHashChange();
+
+        // Listen for hash changes
+        window.addEventListener('hashchange', handleHashChange);
+
+        return () => {
+            window.removeEventListener('hashchange', handleHashChange);
+        };
+    }, []);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -72,7 +112,7 @@ const Contact = () => {
         e.preventDefault();
 
         // Validate required fields
-        if (!formData.name || !formData.email || !formData.phone || !formData.duration || !formData.video_idea) {
+        if (!formData.name || !formData.email || !formData.phone || !formData.duration || !formData.video_type || !formData.video_idea) {
             setAlertMessage("Please fill in all required fields.");
             setAlertType('error');
             return;
@@ -103,6 +143,7 @@ const Contact = () => {
                     name: '',
                     label_name: '',
                     duration: '',
+                    video_type: '',
                     email: '',
                     phone: '',
                     video_idea: ''
@@ -194,6 +235,22 @@ const Contact = () => {
                                     className="w-full bg-zinc-950 border-b-2 border-zinc-700 p-4 text-white focus:outline-none focus:border-[#3F00FF] transition-colors font-bold"
                                     required
                                 />
+                            </div>
+
+                            <div>
+                                <label className="block text-xs font-mono text-indigo-400 uppercase mb-2">Video Type *</label>
+                                <select
+                                    name="video_type"
+                                    value={formData.video_type}
+                                    onChange={handleInputChange}
+                                    className="w-full bg-zinc-950 border-b-2 border-zinc-700 p-4 text-white focus:outline-none focus:border-[#3F00FF] transition-colors font-bold"
+                                    required
+                                >
+                                    <option value="">Select Video Type</option>
+                                    <option value="FULL MUSIC VIDEO">FULL MUSIC VIDEO</option>
+                                    <option value="REEL VIDEO">REEL VIDEO</option>
+                                    <option value="LYRICAL VIDEO">LYRICAL VIDEO</option>
+                                </select>
                             </div>
 
                             <div>
