@@ -177,10 +177,10 @@ const Contact = () => {
 
                     <div className="grid md:grid-cols-2 gap-16">
                         <div>
-                            <h2 className="text-5xl font-black text-white mb-6 uppercase leading-none">Init <span className="text-[#3F00FF]">Sequence</span></h2>
+                            <h2 className="text-5xl font-black text-white mb-6 uppercase leading-none">FilL YOUR DETAILS</h2>
                             <p className="text-zinc-400 mb-10 text-lg leading-relaxed">
-                                Fill the parameters. We process the request. You get the render. <br />
-                                Simple. Fast. Cost-effective.
+                                Fill the parameters. We process the request and will connect with you. <br />
+                                Tech. Reliable. Cost-effective.
                             </p>
 
                             <div className="space-y-8">
@@ -195,7 +195,7 @@ const Contact = () => {
                                     <Music className="text-indigo-400 mt-1 w-6 h-6" />
                                     <div>
                                         <p className="text-xs font-mono text-zinc-500 uppercase">Base of Operations</p>
-                                        <p className="font-bold text-white text-xl">Los Angeles // Cloud</p>
+                                        <p className="font-bold text-white text-xl">Mumbai, India</p>
                                     </div>
                                 </div>
                             </div>
