@@ -1,13 +1,33 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 
-const ProjectCard = ({ title, genre, image, type }) => (
+const ProjectCard = ({ title, genre, video, type }) => (
     <div className="group relative block h-[400px] w-full bg-zinc-900 overflow-hidden border border-zinc-800 hover:border-[#3F00FF] transition-colors">
-        <img
-            src={image}
-            alt={title}
-            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 scale-100 group-hover:scale-110"
-        />
+        {video ? (
+            <video
+                src={video}
+                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 scale-100 group-hover:scale-110"
+                loop
+                muted
+                playsInline
+                onMouseEnter={(e) => e.target.play()}
+                onMouseLeave={(e) => {
+                    e.target.pause();
+                    e.target.currentTime = 0;
+                }}
+            />
+        ) : (
+            <div className="w-full h-full flex items-center justify-center bg-zinc-900">
+                <div className="text-center">
+                    <div className="w-16 h-16 mx-auto mb-4 border-2 border-zinc-700 rounded-full flex items-center justify-center">
+                        <svg className="w-8 h-8 text-zinc-700" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
+                        </svg>
+                    </div>
+                    <p className="text-zinc-600 font-mono text-sm">Video Placeholder</p>
+                </div>
+            </div>
+        )}
         <div className="absolute inset-0 bg-black/50 group-hover:bg-transparent transition-colors"></div>
 
         <div className="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black via-black/90 to-transparent">

@@ -7,10 +7,10 @@ const Portfolio = () => {
     const [ref, isVisible] = useScrollAnimation();
 
     const projects = [
-        { title: "Neon_Dystopia", genre: "Synthwave", type: "NARRATIVE", image: "https://images.unsplash.com/photo-1535402803947-a950d5f714eb?q=80&w=1000&auto=format&fit=crop" },
-        { title: "Echo_Chamber", genre: "Alt Rock", type: "VISUALIZER", image: "https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?q=80&w=1000&auto=format&fit=crop" },
-        { title: "Digital_Soul", genre: "Hyperpop", type: "CHARACTER", image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop" },
-        { title: "Void_Loop", genre: "Techno", type: "ABSTRACT", image: "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&w=1000&auto=format&fit=crop" },
+        { title: "Neon_Dystopia", genre: "Synthwave", type: "NARRATIVE", video: null },
+        { title: "Echo_Chamber", genre: "Alt Rock", type: "VISUALIZER", video: null },
+        { title: "Digital_Soul", genre: "Hyperpop", type: "CHARACTER", video: null },
+        { title: "Void_Loop", genre: "Techno", type: "ABSTRACT", video: null },
     ];
 
     return (
