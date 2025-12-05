@@ -91,7 +91,7 @@ const Hero = () => {
                 </div>
 
                 <h1 className="text-5xl md:text-7xl font-black text-white tracking-tighter mb-8 leading-[0.9] uppercase">
-                    YOUR VOICE, YOUR MUSIC, YOUR SONG <br />
+                    YOUR VOICE, YOUR MUSIC, YOUR SONG. <br />
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3F00FF] to-indigo-500 stroke-white stroke-2">
                         OUR AI VIDEO, JUST FOR YOU
                     </span>
