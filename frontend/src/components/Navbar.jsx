@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Aperture, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -22,10 +22,7 @@ const Navbar = () => {
         <nav className={`fixed w-full z-50 transition-all duration-300 border-b ${scrolled ? 'bg-zinc-950/90 backdrop-blur-md border-[#3F00FF]/50' : 'bg-transparent border-transparent'}`}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-20">
-                    <div className="flex-shrink-0 flex items-center gap-2 cursor-pointer group">
-                        <div className="w-10 h-10 bg-[#3F00FF] rotate-3 group-hover:rotate-0 transition-transform flex items-center justify-center border-2 border-white/10 shadow-[4px_4px_0px_0px_rgba(255,255,255,0.1)]">
-                            <Aperture className="text-white w-6 h-6" />
-                        </div>
+                    <div className="flex-shrink-0 flex items-center cursor-pointer">
                         <span className="font-black text-2xl tracking-tighter text-white uppercase italic">
                             YOUSONICVISIONS
                         </span>

@@ -227,14 +227,45 @@ const Contact = () => {
 
                             <div>
                                 <label className="block text-xs font-mono text-indigo-400 uppercase mb-2">Song Duration *</label>
-                                <input
-                                    type="text"
-                                    name="duration"
-                                    value={formData.duration}
-                                    onChange={handleInputChange}
-                                    className="w-full bg-zinc-950 border-b-2 border-zinc-700 p-4 text-white focus:outline-none focus:border-[#3F00FF] transition-colors font-bold"
-                                    required
-                                />
+                                <div className="flex gap-3 items-center">
+                                    <div className="flex-1">
+                                        <input
+                                            type="number"
+                                            name="duration_minutes"
+                                            min="0"
+                                            max="59"
+                                            placeholder="MM"
+                                            value={formData.duration.split(':')[0] || ''}
+                                            onChange={(e) => {
+                                                const minutes = e.target.value.padStart(2, '0');
+                                                const seconds = formData.duration.split(':')[1] || '00';
+                                                setFormData(prev => ({ ...prev, duration: `${minutes}:${seconds}` }));
+                                            }}
+                                            className="w-full bg-zinc-950 border-b-2 border-zinc-700 p-4 text-white text-center focus:outline-none focus:border-[#3F00FF] transition-colors font-bold"
+                                            required
+                                        />
+                                        <p className="text-xs text-zinc-500 text-center mt-1">Minutes</p>
+                                    </div>
+                                    <span className="text-white text-2xl font-bold">:</span>
+                                    <div className="flex-1">
+                                        <input
+                                            type="number"
+                                            name="duration_seconds"
+                                            min="0"
+                                            max="59"
+                                            placeholder="SS"
+                                            value={formData.duration.split(':')[1] || ''}
+                                            onChange={(e) => {
+                                                const minutes = formData.duration.split(':')[0] || '00';
+                                                const seconds = e.target.value.padStart(2, '0');
+                                                setFormData(prev => ({ ...prev, duration: `${minutes}:${seconds}` }));
+                                            }}
+                                            className="w-full bg-zinc-950 border-b-2 border-zinc-700 p-4 text-white text-center focus:outline-none focus:border-[#3F00FF] transition-colors font-bold"
+                                            required
+                                        />
+                                        <p className="text-xs text-zinc-500 text-center mt-1">Seconds</p>
+                                    </div>
+                                </div>
                             </div>
 
                             <div>

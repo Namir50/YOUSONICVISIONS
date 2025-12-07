@@ -156,38 +156,59 @@ Submitted via YOUSONICVISIONS Contact Form
         company_msg.attach(MIMEText(company_body, "plain"))
         
         # Email to user (confirmation)
-        user_msg = MIMEMultipart()
+        user_msg = MIMEMultipart("alternative")
         user_msg["From"] = smtp_user
         user_msg["To"] = user_email
         user_msg["Subject"] = "Thank you for contacting YOUSONICVISIONS"
         
-        user_body = f"""
-Hi {user_name},
-
-Thank you for reaching out to YOUSONICVISIONS! We have received your submission with the following details:
-
-Name: {user_name}
-Email: {user_email}
-Phone: {phone}
-Label Name: {label_name}
-Song Duration: {duration}
-Video Type: {video_type}
-
-Video Idea / Visual Data:
-{video_idea}
-
-AI Generated Treatment:
-{treatment}
-
-We will review your request and connect with you shortly.
-
-Best regards,
-The YOUSONICVISIONS Team
-
----
-This is an automated confirmation email.
+        user_body_html = f"""
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {{ font-family: Arial, sans-serif; line-height: 1.6; color: #333; }}
+        .container {{ max-width: 600px; margin: 0 auto; padding: 20px; }}
+        .header {{ margin-bottom: 20px; }}
+        .details {{ background-color: #f5f5f5; padding: 15px; border-radius: 5px; margin: 20px 0; }}
+        .bold-message {{ font-weight: bold; margin: 20px 0; }}
+        .footer {{ margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd; color: #666; font-size: 12px; }}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <p>Hi {user_name},</p>
+            <p>Thank you for reaching out to YOUSONICVISIONS! We have received your submission with the following details:</p>
+        </div>
+        
+        <div class="details">
+            <p><strong>Name:</strong> {user_name}</p>
+            <p><strong>Email:</strong> {user_email}</p>
+            <p><strong>Phone:</strong> {phone}</p>
+            <p><strong>Label Name:</strong> {label_name}</p>
+            <p><strong>Song Duration:</strong> {duration}</p>
+            <p><strong>Video Type:</strong> {video_type}</p>
+            
+            <p><strong>Video Idea / Visual Data:</strong></p>
+            <p>{video_idea}</p>
+            
+            <p><strong>AI Generated Treatment:</strong></p>
+            <p>{treatment}</p>
+        </div>
+        
+        <p class="bold-message"><strong>We will review your request and connect with you shortly.</strong></p>
+        
+        <p>Best regards,<br>
+        The YOUSONICVISIONS Team</p>
+        
+        <div class="footer">
+            This is an automated confirmation email.
+        </div>
+    </div>
+</body>
+</html>
 """
-        user_msg.attach(MIMEText(user_body, "plain"))
+        user_msg.attach(MIMEText(user_body_html, "html"))
         
         # Send emails
         with smtplib.SMTP(smtp_host, smtp_port) as server:
