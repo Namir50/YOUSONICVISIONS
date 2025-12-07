@@ -237,9 +237,9 @@ const Contact = () => {
                                             placeholder="MM"
                                             value={formData.duration.split(':')[0] || ''}
                                             onChange={(e) => {
-                                                const minutes = e.target.value.padStart(2, '0');
-                                                const seconds = formData.duration.split(':')[1] || '00';
-                                                setFormData(prev => ({ ...prev, duration: `${minutes}:${seconds}` }));
+                                                const minutes = e.target.value;
+                                                const seconds = formData.duration.split(':')[1] || '';
+                                                setFormData(prev => ({ ...prev, duration: minutes && seconds ? `${minutes}:${seconds}` : minutes ? `${minutes}:` : seconds ? `:${seconds}` : '' }));
                                             }}
                                             className="w-full bg-zinc-950 border-b-2 border-zinc-700 p-4 text-white text-center focus:outline-none focus:border-[#3F00FF] transition-colors font-bold"
                                             required
@@ -256,9 +256,9 @@ const Contact = () => {
                                             placeholder="SS"
                                             value={formData.duration.split(':')[1] || ''}
                                             onChange={(e) => {
-                                                const minutes = formData.duration.split(':')[0] || '00';
-                                                const seconds = e.target.value.padStart(2, '0');
-                                                setFormData(prev => ({ ...prev, duration: `${minutes}:${seconds}` }));
+                                                const minutes = formData.duration.split(':')[0] || '';
+                                                const seconds = e.target.value;
+                                                setFormData(prev => ({ ...prev, duration: minutes && seconds ? `${minutes}:${seconds}` : minutes ? `${minutes}:` : seconds ? `:${seconds}` : '' }));
                                             }}
                                             className="w-full bg-zinc-950 border-b-2 border-zinc-700 p-4 text-white text-center focus:outline-none focus:border-[#3F00FF] transition-colors font-bold"
                                             required
