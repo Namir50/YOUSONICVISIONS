@@ -5,7 +5,10 @@ const Footer = () => (
         <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="flex items-center gap-3">
                 <img src="/logo.jpg" alt="YouSonic Visions Logo" className="h-10 w-10 object-contain" />
-                <span className="font-black text-xl text-white uppercase italic">YOUSONICVISIONS</span>
+                <span className="font-black text-xl uppercase italic">
+                    <span className="text-white">YOUSONICVISIONS</span>
+                    <span style={{ color: '#3F00FF' }}> by YOUNEEQON</span>
+                </span>
             </div>
             <div className="flex gap-8">
                 <a href="#" className="text-zinc-500 hover:text-white uppercase text-xs font-bold">Instagram</a>
