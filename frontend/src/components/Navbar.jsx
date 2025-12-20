@@ -22,9 +22,10 @@ const Navbar = () => {
         <nav className={`fixed w-full z-50 transition-all duration-300 border-b ${scrolled ? 'bg-zinc-950/90 backdrop-blur-md border-[#3F00FF]/50' : 'bg-transparent border-transparent'}`}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-20">
-                    <div className="flex-shrink-0 flex items-center cursor-pointer">
+                    <div className="flex-shrink-0 flex items-center gap-3 cursor-pointer">
+                        <img src="/logo.jpg" alt="YouSonic Visions Logo" className="h-12 w-12 object-contain" />
                         <span className="font-black text-2xl tracking-tighter text-white uppercase italic">
-                            YOUSONICVISIONS
+                            YOUSONIC VISIONS
                         </span>
                     </div>
 
