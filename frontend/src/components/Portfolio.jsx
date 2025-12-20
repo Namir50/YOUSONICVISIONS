@@ -5,9 +5,10 @@ import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 const Portfolio = () => {
     const [ref, isVisible] = useScrollAnimation();
+    // genre: "Full Music Video(LQ)"
 
     const projects = [
-        { title: "Neon_Dystopia", genre: "Synthwave", type: "NARRATIVE", video: null },
+        { title: "For Music Masala", type: "Full Music Video(LQ)", video: "https://www.youtube.com/embed/Kko5D7YWN3w?si=TZiFQyz0ISSKoDjh" },
         { title: "Echo_Chamber", genre: "Alt Rock", type: "VISUALIZER", video: null },
         { title: "Digital_Soul", genre: "Hyperpop", type: "CHARACTER", video: null },
         { title: "Void_Loop", genre: "Techno", type: "ABSTRACT", video: null },

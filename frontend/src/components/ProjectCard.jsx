@@ -4,18 +4,25 @@ import { ArrowRight } from 'lucide-react';
 const ProjectCard = ({ title, genre, video, type }) => (
     <div className="group relative block h-[400px] w-full bg-zinc-900 overflow-hidden border border-zinc-800 hover:border-[#3F00FF] transition-colors">
         {video ? (
-            <video
-                src={video}
-                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 scale-100 group-hover:scale-110"
-                loop
-                muted
-                playsInline
-                onMouseEnter={(e) => e.target.play()}
-                onMouseLeave={(e) => {
-                    e.target.pause();
-                    e.target.currentTime = 0;
-                }}
-            />
+            video.includes('youtube.com') || video.includes('youtu.be') ? (
+                <iframe
+                    src={video}
+                    className="w-full h-full object-cover"
+                    title="YouTube video player"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
+                />
+            ) : (
+                <video
+                    src={video}
+                    className="w-full h-full object-cover transition-all duration-500 scale-100 group-hover:scale-105"
+                    controls
+                    preload="metadata"
+                    playsInline
+                />
+            )
         ) : (
             <div className="w-full h-full flex items-center justify-center bg-zinc-900">
                 <div className="text-center">
@@ -28,12 +35,11 @@ const ProjectCard = ({ title, genre, video, type }) => (
                 </div>
             </div>
         )}
-        <div className="absolute inset-0 bg-black/50 group-hover:bg-transparent transition-colors"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none"></div>
 
-        <div className="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black via-black/90 to-transparent">
+        <div className="absolute bottom-0 left-0 w-full px-6 pt-6 pb-16 bg-gradient-to-t from-black via-black/90 to-transparent pointer-events-none">
             <div className="flex items-center justify-between border-b border-zinc-700 pb-4 mb-4 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
                 <span className="font-mono text-indigo-400 text-xs">{type}</span>
-                <ArrowRight className="text-white w-5 h-5" />
             </div>
             <h3 className="text-4xl font-black text-white uppercase italic leading-none">{title}</h3>
             <p className="text-zinc-400 font-mono text-sm mt-2">{genre}</p>
