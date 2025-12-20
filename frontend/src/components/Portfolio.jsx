@@ -9,9 +9,9 @@ const Portfolio = () => {
 
     const projects = [
         { title: "For Music Masala", type: "Full Music Video(LQ)", video: "https://www.youtube.com/embed/Kko5D7YWN3w?si=TZiFQyz0ISSKoDjh" },
-        { title: "Echo_Chamber", genre: "Alt Rock", type: "VISUALIZER", video: null },
-        { title: "Digital_Soul", genre: "Hyperpop", type: "CHARACTER", video: null },
-        { title: "Void_Loop", genre: "Techno", type: "ABSTRACT", video: null },
+        { title: "Coming Soon", genre: "Alt Rock", type: "VISUALIZER", video: null },
+        { title: "Coming Soon", genre: "Hyperpop", type: "CHARACTER", video: null },
+        { title: "Coming Soon", genre: "Techno", type: "ABSTRACT", video: null },
     ];
 
     return (

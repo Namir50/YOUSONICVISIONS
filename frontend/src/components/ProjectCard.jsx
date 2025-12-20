@@ -37,11 +37,9 @@ const ProjectCard = ({ title, genre, video, type }) => (
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none"></div>
 
-        <div className="absolute bottom-0 left-0 w-full px-6 pt-6 pb-16 bg-gradient-to-t from-black via-black/90 to-transparent pointer-events-none">
-            <div className="flex items-center justify-between border-b border-zinc-700 pb-4 mb-4 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                <span className="font-mono text-indigo-400 text-xs">{type}</span>
-            </div>
-            <h3 className="text-4xl font-black text-white uppercase italic leading-none">{title}</h3>
+        <div className="absolute bottom-12 left-0 w-full p-6 pointer-events-none">
+            <span className="font-mono text-indigo-400 text-xs block mb-2">{type}</span>
+            <h3 className="text-4xl font-black text-white uppercase italic leading-none drop-shadow-lg">{title}</h3>
             <p className="text-zinc-400 font-mono text-sm mt-2">{genre}</p>
         </div>
     </div>
