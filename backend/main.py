@@ -112,7 +112,7 @@ async def submit_contact(request: dict):
     smtp_port = int(os.getenv("SMTP_PORT", "587"))
     smtp_user = os.getenv("SMTP_USER", "")
     smtp_password = os.getenv("SMTP_PASSWORD", "")
-    company_email = os.getenv("COMPANY_EMAIL", "hello@yousonicvisions.com")
+    company_email = os.getenv("COMPANY_EMAIL", "yousonicvisions@gmail.com")
     
     if not smtp_user or not smtp_password:
         raise HTTPException(status_code=500, detail="Email configuration not set")

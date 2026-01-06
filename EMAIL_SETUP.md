@@ -8,7 +8,7 @@ To enable email functionality for the contact form, you need to configure Gmail 
 
 1. Go to your Google Account: https://myaccount.google.com/
 2. Navigate to **Security** → **2-Step Verification** (enable if not already)
-3. Scroll down to **App passwords**: https://myaccount.google.com/apppasswords
+3. Scroll down to **App passwords**: https://myaccount.google.com/apppasswords   
 4. Select app: **Mail**
 5. Select device: **Other (Custom name)** → Enter "VISIONSONICAI"
 6. Click **Generate**

@@ -11,7 +11,7 @@ const Footer = () => (
                 </span>
             </div>
             <div className="flex gap-8">
-                <a href="#" className="text-zinc-500 hover:text-white uppercase text-xs font-bold">Instagram</a>
+                <a href="https://www.instagram.com/yousonicvisions/" target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-white uppercase text-xs font-bold">Instagram</a>
                 <a href="#" className="text-zinc-500 hover:text-white uppercase text-xs font-bold">Twitter</a>
                 <a href="#" className="text-zinc-500 hover:text-white uppercase text-xs font-bold">YouTube</a>
             </div>
