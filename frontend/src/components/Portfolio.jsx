@@ -8,10 +8,10 @@ const Portfolio = () => {
     // genre: "Full Music Video(LQ)"
 
     const projects = [
+        { title: "Demo Video", type: "Full Music Video(HQ)", video: "https://www.youtube.com/embed/b-BcPMeHMyU?si=B4kGTOwzSMQUKSjS" },
         { title: "For Music Masala", type: "Full Music Video(LQ)", video: "https://www.youtube.com/embed/Kko5D7YWN3w?si=TZiFQyz0ISSKoDjh" },
-        { title: "Coming Soon", type: "Rap", video: null },
-        { title: "Coming Soon", type: "Pop", video: null },
-        { title: "Coming Soon", type: "Bollywood Romance", video: null },
+        { title: "Demo Video", type: "Rap", video: null },
+        { title: "Demo Video", type: "Pop", video: null },
     ];
 
     return (
