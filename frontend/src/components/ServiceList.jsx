@@ -5,17 +5,14 @@ const ServiceList = () => {
     const services = [
         {
             name: "Full music video",
-            price: "Starts from ₹6999",
             items: ["Comprehensive Scripting", "Custom AI Models", "High-Quality Render", "Advanced FX & Grading"]
         },
         {
             name: "Reel video",
-            price: "Starts from ₹2999",
             items: ["Short-form Optimization", "Looping/Seamless Cuts", "Mobile Aspect Ratio", "Trend-based Visuals"]
         },
         {
             name: "Lyrical video",
-            price: "Starts from ₹4999",
             items: ["AI Locations and Visuals", "Audio-Reactive Elements", "Custom Typography", "Fast Turnaround"]
         },
     ];
