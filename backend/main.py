@@ -96,13 +96,20 @@ async def expand_vibe(request: VibeRequest):
 async def submit_contact(request: dict):
     """
     Submit contact form and send emails to both company and user
+    Handles both music_video and advertisement form types
     """
     import smtplib
     from email.mime.text import MIMEText
     from email.mime.multipart import MIMEMultipart
     
-    # Validate required fields
-    required_fields = ["name", "email", "phone", "duration", "video_type", "video_idea"]
+    form_type = request.get("form_type", "music_video")
+    
+    # Validate required fields based on form type
+    if form_type == "music_video":
+        required_fields = ["name", "email", "phone", "duration", "video_type", "video_idea"]
+    else:  # advertisement
+        required_fields = ["name", "company_name", "ad_duration", "lip_sync_required", "email", "phone"]
+    
     for field in required_fields:
         if not request.get(field):
             raise HTTPException(status_code=400, detail=f"{field} is required")
@@ -118,24 +125,27 @@ async def submit_contact(request: dict):
         raise HTTPException(status_code=500, detail="Email configuration not set")
     
     try:
-        # Prepare email content
         user_name = request.get("name")
         user_email = request.get("email")
         phone = request.get("phone")
-        label_name = request.get("label_name", "N/A")
-        duration = request.get("duration")
-        video_type = request.get("video_type")
-        video_idea = request.get("video_idea")
-        treatment = request.get("generated_treatment", "Not generated")
         
         # Email to company
         company_msg = MIMEMultipart()
         company_msg["From"] = smtp_user
         company_msg["To"] = company_email
-        company_msg["Subject"] = f"New Contact Form Submission from {user_name}"
         
-        company_body = f"""
-New contact form submission received:
+        if form_type == "music_video":
+            # Music Video Form
+            label_name = request.get("label_name", "N/A")
+            duration = request.get("duration")
+            video_type = request.get("video_type")
+            video_idea = request.get("video_idea")
+            treatment = request.get("generated_treatment", "Not generated")
+            
+            company_msg["Subject"] = f"New Music Video Inquiry from {user_name}"
+            
+            company_body = f"""
+New AI Music Video form submission received:
 
 Name: {user_name}
 Email: {user_email}
@@ -151,17 +161,10 @@ AI Generated Treatment:
 {treatment}
 
 ---
-Submitted via YOUSONICVISIONS Contact Form
+Submitted via YOUSONICVISIONS Contact Form (AI Music Video)
 """
-        company_msg.attach(MIMEText(company_body, "plain"))
-        
-        # Email to user (confirmation)
-        user_msg = MIMEMultipart("alternative")
-        user_msg["From"] = smtp_user
-        user_msg["To"] = user_email
-        user_msg["Subject"] = "Thank you for contacting YOUSONICVISIONS"
-        
-        user_body_html = f"""
+            
+            user_body_html = f"""
 <!DOCTYPE html>
 <html>
 <head>
@@ -178,7 +181,7 @@ Submitted via YOUSONICVISIONS Contact Form
     <div class="container">
         <div class="header">
             <p>Hi {user_name},</p>
-            <p>Thank you for reaching out to YOUSONICVISIONS! We have received your submission with the following details:</p>
+            <p>Thank you for reaching out to YOUSONICVISIONS! We have received your AI Music Video submission with the following details:</p>
         </div>
         
         <div class="details">
@@ -208,6 +211,77 @@ Submitted via YOUSONICVISIONS Contact Form
 </body>
 </html>
 """
+        else:
+            # Advertisement Form
+            company_name = request.get("company_name")
+            ad_duration = request.get("ad_duration")
+            lip_sync_required = request.get("lip_sync_required")
+            
+            company_msg["Subject"] = f"New AI Advertisement Inquiry from {user_name} ({company_name})"
+            
+            company_body = f"""
+New AI Advertisement form submission received:
+
+Name: {user_name}
+Company Name: {company_name}
+Email: {user_email}
+Phone: {phone}
+Ad Duration: {ad_duration}
+Lip Sync Required: {lip_sync_required}
+
+---
+Submitted via YOUSONICVISIONS Contact Form (AI Advertisement)
+"""
+            
+            user_body_html = f"""
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {{ font-family: Arial, sans-serif; line-height: 1.6; color: #333; }}
+        .container {{ max-width: 600px; margin: 0 auto; padding: 20px; }}
+        .header {{ margin-bottom: 20px; }}
+        .details {{ background-color: #f5f5f5; padding: 15px; border-radius: 5px; margin: 20px 0; }}
+        .bold-message {{ font-weight: bold; margin: 20px 0; }}
+        .footer {{ margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd; color: #666; font-size: 12px; }}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <p>Hi {user_name},</p>
+            <p>Thank you for reaching out to YOUSONICVISIONS! We have received your AI Advertisement inquiry with the following details:</p>
+        </div>
+        
+        <div class="details">
+            <p><strong>Name:</strong> {user_name}</p>
+            <p><strong>Company Name:</strong> {company_name}</p>
+            <p><strong>Email:</strong> {user_email}</p>
+            <p><strong>Phone:</strong> {phone}</p>
+            <p><strong>Ad Duration:</strong> {ad_duration}</p>
+            <p><strong>Lip Sync Required:</strong> {lip_sync_required}</p>
+        </div>
+        
+        <p class="bold-message"><strong>We will review your request and connect with you shortly.</strong></p>
+        
+        <p>Best regards,<br>
+        The YOUSONICVISIONS Team</p>
+        
+        <div class="footer">
+            This is an automated confirmation email.
+        </div>
+    </div>
+</body>
+</html>
+"""
+        
+        company_msg.attach(MIMEText(company_body, "plain"))
+        
+        # Email to user (confirmation)
+        user_msg = MIMEMultipart("alternative")
+        user_msg["From"] = smtp_user
+        user_msg["To"] = user_email
+        user_msg["Subject"] = "Thank you for contacting YOUSONICVISIONS"
         user_msg.attach(MIMEText(user_body_html, "html"))
         
         # Send emails

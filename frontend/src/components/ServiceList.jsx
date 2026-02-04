@@ -15,6 +15,10 @@ const ServiceList = () => {
             name: "Lyrical video",
             items: ["AI Locations and Visuals", "Audio-Reactive Elements", "Custom Typography", "Fast Turnaround"]
         },
+        {
+            name: "Advertisement video",
+            items: ["AI-Powered Visuals", "Lip Sync Technology", "Brand-Focused Storytelling", "Realistic and Identical Products"]
+        },
     ];
 
     return (
@@ -23,21 +27,21 @@ const ServiceList = () => {
                 <h2 className="text-4xl md:text-6xl font-black text-white text-center mb-16 uppercase tracking-tight">Production Menu</h2>
 
                 {/* Corrected: Reverted section background to zinc-950 and used indigo for strong borders and accents */}
-                <div className="grid md:grid-cols-3 gap-px bg-zinc-800 border-b border-t border-zinc-800">
+                <div className="grid md:grid-cols-4 gap-px bg-zinc-800 border-b border-t border-zinc-800">
                     {services.map((service, idx) => (
                         <div
                             key={idx}
-                            className="bg-zinc-900 p-10 hover:bg-zinc-800 transition-colors group border-b md:border-b-0 md:border-r border-zinc-800 last:md:border-r-0 relative"
+                            className="bg-zinc-900 p-10 hover:bg-zinc-800 transition-colors group border-b md:border-b-0 md:border-r border-zinc-800 last:md:border-r-0 relative flex flex-col h-full"
                         >
                             {/* Internal border accent to meet the color request */}
                             <div className="absolute inset-0 border-2 border-transparent group-hover:border-[#3F00FF] transition-all pointer-events-none"></div>
 
-                            <div className="flex justify-between items-start mb-8">
+                            <div className="flex justify-between items-start mb-8 min-h-[4.5rem]">
                                 <h3 className="text-3xl font-black uppercase leading-8 text-white">{service.name}</h3>
-                                <Zap className="w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity text-[#3F00FF]" />
+                                <Zap className="w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity text-[#3F00FF] flex-shrink-0" />
                             </div>
                             <p className="text-2xl font-bold font-mono mb-8 border-b-2 border-indigo-700 pb-4 inline-block text-white">{service.price}</p>
-                            <ul className="space-y-4 mb-8">
+                            <ul className="space-y-4 mb-8 flex-grow">
                                 {service.items.map((item, i) => (
                                     <li key={i} className="flex items-center font-medium text-zinc-300">
                                         <div className="w-1.5 h-1.5 bg-[#3F00FF] mr-3"></div>
@@ -47,7 +51,7 @@ const ServiceList = () => {
                             </ul>
                             <a
                                 href={`#contact?videoType=${service.name.toUpperCase().replace(/ /g, '_')}`}
-                                className="block w-full py-4 bg-black text-white font-bold text-center uppercase tracking-widest hover:bg-[#3F00FF] transition-colors shadow-[0_4px_0_0_#3F00FF] hover:shadow-none"
+                                className="block w-full py-4 bg-black text-white font-bold text-center uppercase tracking-widest hover:bg-[#3F00FF] transition-colors shadow-[0_4px_0_0_#3F00FF] hover:shadow-none mt-auto"
                             >
                                 Select
                             </a>

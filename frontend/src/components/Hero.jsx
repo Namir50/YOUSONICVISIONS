@@ -77,7 +77,6 @@ const Hero = () => {
                 {/* Scrolling ticker simulation */}
                 <div className="absolute bottom-10 w-full overflow-hidden whitespace-nowrap opacity-40">
                     <div className="inline-block animate-[scroll_20s_linear_infinite] text-8xl font-black text-transparent stroke-text">
-                        GENAI // MUSIC // VIDEO // FUTURE // RENDER // GENAI // MUSIC // VIDEO // FUTURE // RENDER //
                     </div>
                 </div>
             </div>
@@ -91,14 +90,14 @@ const Hero = () => {
                 </div>
 
                 <h1 className="text-5xl md:text-7xl font-black text-white tracking-tighter mb-8 leading-[0.9] uppercase">
-                    YOUR VOICE, YOUR MUSIC, YOUR SONG. <br />
+                    YOUR VOICE, YOUR MUSIC, YOUR SONG, YOUR BRAND <br />
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3F00FF] to-indigo-500 stroke-white stroke-2">
                         OUR AI VIDEO, JUST FOR YOU
                     </span>
                 </h1>
 
                 <p className="mt-4 max-w-2xl mx-auto text-xl md:text-2xl text-zinc-400 font-light mb-12 border-l-4 border-[#3F00FF] pl-6 text-left">
-                    We use generative engines to build <span className="text-white font-bold">music videos</span> that cost less and hit harder. No physical cameras. Just tech.
+                    We use generative engines to build <span className="text-white font-bold">music videos</span> and <span className="text-white font-bold">AI-powered advertisements</span> that cost less and hit harder. No physical cameras. Just tech.
                 </p>
 
                 <div className="flex flex-col sm:flex-row justify-center gap-6 w-full max-w-md sm:max-w-none">

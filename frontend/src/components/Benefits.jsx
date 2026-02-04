@@ -20,7 +20,7 @@ const Benefits = () => {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div className="mb-20 flex flex-col md:flex-row justify-between items-end border-b border-zinc-800 pb-8">
                     <h2 className="text-5xl md:text-7xl font-black text-white uppercase">The Upgrade</h2>
-                    <p className="text-[#3F00FF] font-mono mt-4 md:mt-0">/// WHY SWITCH TO AI GENERATION</p>
+                    <p className="text-[#3F00FF] font-mono mt-4 md:mt-0">/// WHY SWITCH TO AI</p>
                 </div>
 
                 <div className="grid md:grid-cols-3 gap-6">
