@@ -57,13 +57,13 @@ const Navbar = () => {
             {/* Mobile Menu */}
             {isOpen && (
                 <div className="md:hidden bg-zinc-900 border-b border-[#3F00FF]">
-                    <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                    <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 text-center">
                         {navLinks.map((link) => (
                             <a
                                 key={link.name}
                                 href={link.href}
                                 onClick={() => setIsOpen(false)}
-                                className="text-white hover:text-indigo-400 block px-3 py-4 text-2xl font-black uppercase border-b border-zinc-800"
+                                className="text-white hover:text-indigo-400 block py-4 text-2xl font-black uppercase border-b border-zinc-800"
                             >
                                 {link.name}
                             </a>
