@@ -1,7 +1,10 @@
 import React from 'react';
 import { Zap } from 'lucide-react';
+import { useStaggerAnimation } from '../hooks/useScrollAnimation';
 
 const ServiceList = () => {
+    const [ref, isVisible] = useStaggerAnimation();
+
     const services = [
         {
             name: "Full music video",
@@ -22,18 +25,23 @@ const ServiceList = () => {
     ];
 
     return (
-        <section id="services" className="py-24 bg-zinc-950 text-white">
+        <section id="services" ref={ref} className="py-24 bg-zinc-950 text-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 className="text-4xl md:text-6xl font-black text-white text-center mb-16 uppercase tracking-tight">Production Menu</h2>
+                <h2
+                    className={`text-4xl md:text-6xl font-black text-white text-center mb-16 uppercase tracking-tight ${isVisible ? 'anim-text-reveal stagger-2' : 'anim-hidden'}`}
+                    style={{ animationDuration: '2s' }}
+                >
+                    Production Menu
+                </h2>
 
-                {/* Corrected: Reverted section background to zinc-950 and used indigo for strong borders and accents */}
                 <div className="grid md:grid-cols-4 gap-px bg-zinc-800 border-b border-t border-zinc-800">
                     {services.map((service, idx) => (
                         <div
                             key={idx}
-                            className="bg-zinc-900 p-6 md:p-10 hover:bg-zinc-800 transition-colors group border-b md:border-b-0 md:border-r border-zinc-800 last:md:border-r-0 relative flex flex-col h-full"
+                            className={`bg-zinc-900 p-6 md:p-10 hover:bg-zinc-800 transition-all group border-b md:border-b-0 md:border-r border-zinc-800 last:md:border-r-0 relative flex flex-col h-full card-hover-lift ${isVisible ? 'anim-fade-in-up' : 'anim-hidden'}`}
+                            style={{ animationDelay: `${0.2 + idx * 0.15}s` }}
                         >
-                            {/* Internal border accent to meet the color request */}
+                            {/* Internal border accent */}
                             <div className="absolute inset-0 border-2 border-transparent group-hover:border-[#3F00FF] transition-all pointer-events-none"></div>
 
                             <div className="flex flex-col md:flex-row justify-between items-center md:items-start mb-8 min-h-[4.5rem] text-center md:text-left">
@@ -43,7 +51,11 @@ const ServiceList = () => {
                             <p className="text-2xl font-bold font-mono mb-8 border-b-2 border-indigo-700 pb-4 inline-block text-white w-max mx-auto md:mx-0">{service.price}</p>
                             <ul className="space-y-4 mb-8 flex-grow flex flex-col items-center md:items-start">
                                 {services[idx].items.map((item, i) => (
-                                    <li key={i} className="flex items-center font-medium text-zinc-300">
+                                    <li
+                                        key={i}
+                                        className={`flex items-center font-medium text-zinc-300 transition-all duration-300 ${isVisible ? 'anim-fade-in-left' : 'anim-hidden'}`}
+                                        style={{ animationDelay: `${0.4 + idx * 0.15 + i * 0.08}s` }}
+                                    >
                                         <div className="w-1.5 h-1.5 bg-[#3F00FF] mr-3"></div>
                                         {item}
                                     </li>

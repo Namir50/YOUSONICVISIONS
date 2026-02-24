@@ -9,20 +9,20 @@ const Hero = () => {
 
             {/* Animated Motion Graphics - AI & Music Theme */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden">
-                {/* Top Left - Floating Particles/Orbs */}
-                <div className="absolute top-32 left-16 w-48 h-48 opacity-40">
+                {/* Top Left - Floating Particles/Orbs with orbit */}
+                <div className="absolute top-32 left-16 w-48 h-48 opacity-40 anim-orbit" style={{ animationDuration: '25s' }}>
                     <svg viewBox="0 0 100 100" className="w-full h-full">
-                        <circle cx="20" cy="30" r="4" fill="#3F00FF" className="animate-pulse" />
-                        <circle cx="50" cy="20" r="6" fill="#6366f1" className="animate-ping" style={{ animationDelay: '0.3s' }} />
-                        <circle cx="70" cy="40" r="3" fill="#3F00FF" className="animate-pulse" style={{ animationDelay: '0.6s' }} />
-                        <circle cx="35" cy="60" r="5" fill="#8b5cf6" className="animate-ping" style={{ animationDelay: '0.9s' }} />
-                        <circle cx="60" cy="70" r="4" fill="#6366f1" className="animate-pulse" style={{ animationDelay: '1.2s' }} />
-                        <circle cx="80" cy="80" r="3" fill="#3F00FF" className="animate-ping" style={{ animationDelay: '1.5s' }} />
+                        <circle cx="20" cy="30" r="4" fill="#3F00FF" className="anim-particle-drift" />
+                        <circle cx="50" cy="20" r="6" fill="#6366f1" className="anim-particle-drift" style={{ animationDelay: '0.3s' }} />
+                        <circle cx="70" cy="40" r="3" fill="#3F00FF" className="anim-particle-drift" style={{ animationDelay: '0.6s' }} />
+                        <circle cx="35" cy="60" r="5" fill="#8b5cf6" className="anim-particle-drift" style={{ animationDelay: '0.9s' }} />
+                        <circle cx="60" cy="70" r="4" fill="#6366f1" className="anim-particle-drift" style={{ animationDelay: '1.2s' }} />
+                        <circle cx="80" cy="80" r="3" fill="#3F00FF" className="anim-particle-drift" style={{ animationDelay: '1.5s' }} />
                     </svg>
                 </div>
 
-                {/* Top Right - Neural Network */}
-                <div className="absolute top-24 right-16 w-40 h-40 opacity-35">
+                {/* Top Right - Neural Network with orbit */}
+                <div className="absolute top-24 right-16 w-40 h-40 opacity-35 anim-orbit" style={{ animationDuration: '30s', animationDirection: 'reverse' }}>
                     <svg viewBox="0 0 100 100" className="w-full h-full">
                         <circle cx="20" cy="20" r="2.5" fill="#3F00FF" className="animate-ping" />
                         <circle cx="50" cy="30" r="2.5" fill="#6366f1" className="animate-pulse" />
@@ -74,6 +74,11 @@ const Hero = () => {
                 {/* Center Floating Note */}
                 <div className="absolute bottom-1/3 right-1/3 text-4xl text-[#3F00FF] opacity-40 animate-[float_7s_ease-in-out_infinite]" style={{ animationDelay: '2s' }}>♬</div>
 
+                {/* Additional floating particles */}
+                <div className="absolute top-1/4 left-1/3 w-2 h-2 bg-[#3F00FF] rounded-full anim-particle-drift opacity-30" style={{ animationDelay: '0.5s' }}></div>
+                <div className="absolute top-2/3 right-1/4 w-3 h-3 bg-indigo-500 rounded-full anim-particle-drift opacity-20" style={{ animationDelay: '1.5s' }}></div>
+                <div className="absolute bottom-1/4 left-1/4 w-1.5 h-1.5 bg-violet-400 rounded-full anim-particle-drift opacity-25" style={{ animationDelay: '2.5s' }}></div>
+
                 {/* Scrolling ticker simulation */}
                 <div className="absolute bottom-10 w-full overflow-hidden whitespace-nowrap opacity-40">
                     <div className="inline-block animate-[scroll_20s_linear_infinite] text-8xl font-black text-transparent stroke-text">
@@ -83,33 +88,60 @@ const Hero = () => {
 
             <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
 
-                <div className="mb-6 animate-bounce">
+                {/* Badge - fadeInUp entrance */}
+                <div className="mb-6 anim-fade-in-up" style={{ animationDelay: '0.2s' }}>
                     <span className="bg-zinc-900 border border-zinc-700 text-indigo-400 px-4 py-1 font-mono text-xs uppercase tracking-[0.2em] shadow-[0_0_10px_rgba(63,0,255,0.5)]">
                         BY YOUNEEQON
                     </span>
                 </div>
 
+                {/* Main heading with premium line-mask reveal */}
                 <h1 className="text-5xl md:text-7xl font-black text-white tracking-tighter mb-8 leading-[0.9] uppercase">
-                    YOUR VOICE, YOUR MUSIC, YOUR SONG, YOUR BRAND. <br />
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3F00FF] to-indigo-500 stroke-white stroke-2">
+                    <span className="block overflow-hidden">
+                        <span
+                            className="block opacity-0"
+                            style={{
+                                animation: 'lineMaskReveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards'
+                            }}
+                        >
+                            YOUR VOICE, YOUR MUSIC,
+                        </span>
+                    </span>
+                    <span className="block overflow-hidden">
+                        <span
+                            className="block opacity-0"
+                            style={{
+                                animation: 'lineMaskReveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards'
+                            }}
+                        >
+                            YOUR SONG, YOUR BRAND.
+                        </span>
+                    </span>
+                    <br />
+                    <span
+                        className="text-transparent bg-clip-text bg-gradient-to-r from-[#3F00FF] via-indigo-400 to-[#3F00FF] stroke-white stroke-2 inline-block"
+                        style={{
+                            backgroundSize: '200% auto'
+                        }}
+                    >
                         OUR AI VIDEO, JUST FOR YOU
                     </span>
                 </h1>
 
-                <p className="mt-4 max-w-2xl mx-auto text-xl md:text-2xl text-zinc-400 font-light mb-12 border-l-4 border-[#3F00FF] pl-6 text-left">
+                {/* Paragraph - fade in from left */}
+                <p className="mt-4 max-w-2xl mx-auto text-xl md:text-2xl text-zinc-400 font-light mb-12 border-l-4 border-[#3F00FF] pl-6 text-left anim-fade-in-left" style={{ animationDelay: '1.2s' }}>
                     We use generative engines to build <span className="text-white font-bold">music videos</span> and <span className="text-white font-bold">AI-powered advertisements</span> that cost less and hit harder. No physical cameras. Just tech.
                 </p>
 
-                <div className="flex flex-col sm:flex-row justify-center gap-6 w-full max-w-md sm:max-w-none">
-                    <a href="#contact" className="group relative px-8 py-5 bg-[#3F00FF] text-white font-black text-lg uppercase tracking-wider transition-all hover:bg-indigo-600 shadow-[8px_8px_0px_0px_rgba(255,255,255,0.1)] hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px]">
+                {/* CTA buttons with scaleIn + pulseGlow */}
+                <div className="flex flex-col sm:flex-row justify-center gap-6 w-full max-w-md sm:max-w-none anim-fade-in-up" style={{ animationDelay: '1.5s' }}>
+                    <a href="#contact" className="group relative px-8 py-5 bg-[#3F00FF] text-white font-black text-lg uppercase tracking-wider transition-all hover:bg-indigo-600 shadow-[8px_8px_0px_0px_rgba(255,255,255,0.1)] hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] anim-pulse-glow" style={{ animationDelay: '2s' }}>
                         Initialize Project
                     </a>
-                    <a href="#portfolio" className="group px-8 py-5 border-2 border-zinc-700 text-white font-bold text-lg uppercase tracking-wider hover:border-indigo-400 hover:text-indigo-400 transition-all flex items-center justify-center gap-2">
+                    <a href="#portfolio" className="group px-8 py-5 border-2 border-zinc-700 text-white font-bold text-lg uppercase tracking-wider hover:border-indigo-400 hover:text-indigo-400 transition-all flex items-center justify-center gap-2 anim-scale-in" style={{ animationDelay: '1.8s' }}>
                         <Play className="w-5 h-5 fill-current" /> Demo
                     </a>
                 </div>
-
-
             </div>
         </div>
     );

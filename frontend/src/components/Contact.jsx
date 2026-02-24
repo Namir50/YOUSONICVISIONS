@@ -1,8 +1,10 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { Mail, Music, Loader, Video, Megaphone } from 'lucide-react';
 import CustomAlert from './CustomAlert';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 const Contact = () => {
+    const [sectionRef, isVisible] = useScrollAnimation(0.1);
     const [activeTab, setActiveTab] = useState('music_video'); // 'music_video' or 'advertisement'
 
     const [musicVideoForm, setMusicVideoForm] = useState({
@@ -244,11 +246,11 @@ const Contact = () => {
     };
 
     return (
-        <section id="contact" className="py-32 bg-zinc-950 relative overflow-hidden">
+        <section id="contact" ref={sectionRef} className="py-32 bg-zinc-950 relative overflow-hidden">
             <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#3F00FF] to-transparent"></div>
 
             <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div className="bg-zinc-900 border border-zinc-800 p-4 sm:p-8 md:p-16 relative overflow-hidden">
+                <div className={`bg-zinc-900 border border-zinc-800 p-4 sm:p-8 md:p-16 relative overflow-hidden transition-all duration-1000 ${isVisible ? 'anim-fade-in-up' : 'anim-hidden'}`}>
                     <div className="absolute top-0 right-0 p-4">
                         <div className="grid grid-cols-2 gap-1">
                             {[...Array(4)].map((_, i) => <div key={i} className="w-1 h-1 bg-[#3F00FF]"></div>)}
@@ -257,21 +259,21 @@ const Contact = () => {
 
                     <div className="flex flex-col md:grid md:grid-cols-2 gap-8 md:gap-16">
                         <div className="text-left">
-                            <h2 className="text-4xl md:text-5xl font-black text-white mb-6 uppercase leading-none">FILL YOUR DETAILS</h2>
-                            <p className="text-zinc-400 mb-10 text-base md:text-lg leading-relaxed">
+                            <h2 className={`text-4xl md:text-5xl font-black text-white mb-6 uppercase leading-none ${isVisible ? 'anim-text-reveal stagger-2' : 'anim-hidden'}`} style={{ animationDuration: '1s' }}>FILL YOUR DETAILS</h2>
+                            <p className={`text-zinc-400 mb-10 text-base md:text-lg leading-relaxed ${isVisible ? 'anim-fade-in-left stagger-3' : 'anim-hidden'}`}>
                                 Fill the parameters. We process the request and will connect with you. <br />
                                 Tech. Reliable. Cost-effective.
                             </p>
 
                             <div className="space-y-6 md:space-y-8">
-                                <div className="flex items-start gap-4">
+                                <div className={`flex items-start gap-4 ${isVisible ? 'anim-fade-in-left stagger-4' : 'anim-hidden'}`}>
                                     <Mail className="text-indigo-400 mt-1 w-6 h-6 flex-shrink-0" />
                                     <div className="text-left">
                                         <p className="text-xs font-mono text-zinc-500 uppercase">Communication Channel</p>
                                         <p className="font-bold text-white text-lg md:text-xl break-words">yousonicvisions@gmail.com</p>
                                     </div>
                                 </div>
-                                <div className="flex items-start gap-4">
+                                <div className={`flex items-start gap-4 ${isVisible ? 'anim-fade-in-left stagger-5' : 'anim-hidden'}`}>
                                     <Music className="text-indigo-400 mt-1 w-6 h-6 flex-shrink-0" />
                                     <div className="text-left">
                                         <p className="text-xs font-mono text-zinc-500 uppercase">Base of Operations</p>
@@ -283,7 +285,7 @@ const Contact = () => {
 
                         <div>
                             {/* Tab Switcher */}
-                            <div className="flex mb-8 border-b border-zinc-700">
+                            <div className={`flex mb-8 border-b border-zinc-700 ${isVisible ? 'anim-fade-in-up stagger-3' : 'anim-hidden'}`}>
                                 <button
                                     type="button"
                                     onClick={() => setActiveTab('music_video')}
@@ -311,7 +313,7 @@ const Contact = () => {
                             {/* Music Video Form */}
                             {activeTab === 'music_video' && (
                                 <form className="space-y-6" onSubmit={handleMusicVideoSubmit}>
-                                    <div>
+                                    <div className={`${isVisible ? 'anim-fade-in-up stagger-4' : 'anim-hidden'}`}>
                                         <label className="block text-xs font-mono text-indigo-400 uppercase mb-2">Your Name *</label>
                                         <input
                                             type="text"
@@ -323,7 +325,7 @@ const Contact = () => {
                                         />
                                     </div>
 
-                                    <div>
+                                    <div className={`${isVisible ? 'anim-fade-in-up stagger-5' : 'anim-hidden'}`}>
                                         <label className="block text-xs font-mono text-indigo-400 uppercase mb-2">Label Name (Optional)</label>
                                         <input
                                             type="text"
@@ -334,7 +336,7 @@ const Contact = () => {
                                         />
                                     </div>
 
-                                    <div>
+                                    <div className={`${isVisible ? 'anim-fade-in-up stagger-6' : 'anim-hidden'}`}>
                                         <label className="block text-xs font-mono text-indigo-400 uppercase mb-2">Song Duration *</label>
                                         <div className="flex gap-3 items-center">
                                             <div className="flex-1">
@@ -377,7 +379,7 @@ const Contact = () => {
                                         </div>
                                     </div>
 
-                                    <div>
+                                    <div className={`${isVisible ? 'anim-fade-in-up stagger-7' : 'anim-hidden'}`}>
                                         <label className="block text-xs font-mono text-indigo-400 uppercase mb-2">Video Type *</label>
                                         <select
                                             name="video_type"
@@ -393,7 +395,7 @@ const Contact = () => {
                                         </select>
                                     </div>
 
-                                    <div>
+                                    <div className={`${isVisible ? 'anim-fade-in-up stagger-7' : 'anim-hidden'}`}>
                                         <label className="block text-xs font-mono text-indigo-400 uppercase mb-2">Email *</label>
                                         <input
                                             type="email"
@@ -405,7 +407,7 @@ const Contact = () => {
                                         />
                                     </div>
 
-                                    <div>
+                                    <div className={`${isVisible ? 'anim-fade-in-up stagger-8' : 'anim-hidden'}`}>
                                         <label className="block text-xs font-mono text-indigo-400 uppercase mb-2">Phone Number *</label>
                                         <input
                                             type="tel"
@@ -418,7 +420,7 @@ const Contact = () => {
                                     </div>
 
                                     {/* Video Idea / Visual Data with Gemini Feature */}
-                                    <div>
+                                    <div className={`${isVisible ? 'anim-fade-in-up stagger-8' : 'anim-hidden'}`}>
                                         <div className="flex justify-between items-end mb-2">
                                             <label className="block text-xs font-mono text-indigo-400 uppercase">Video Idea / Visual Data *</label>
                                             <button
@@ -447,7 +449,7 @@ const Contact = () => {
 
                                     {/* Generated Visual Treatment Output */}
                                     {generatedTreatment && (
-                                        <div className="mt-8 pt-6 border-t border-zinc-700">
+                                        <div className="mt-8 pt-6 border-t border-zinc-700 anim-fade-in-up">
                                             <h4 className="text-xs font-mono text-indigo-400 uppercase mb-3">AI Visual Treatment Draft:</h4>
                                             <div className="bg-zinc-950 p-4 border border-[#3F00FF]/50 text-sm text-zinc-300 whitespace-pre-line rounded-lg">
                                                 {generatedTreatment}
@@ -458,7 +460,7 @@ const Contact = () => {
                                     <button
                                         type="submit"
                                         disabled={isSubmitting}
-                                        className={`w-full font-black uppercase py-5 text-lg transition-colors tracking-widest ${isSubmitting ? 'bg-zinc-700 text-zinc-400 cursor-not-allowed' : 'bg-[#3F00FF] text-white hover:bg-white hover:text-[#3F00FF]'}`}
+                                        className={`w-full font-black uppercase py-5 text-lg transition-all tracking-widest ${isSubmitting ? 'bg-zinc-700 text-zinc-400 cursor-not-allowed' : 'bg-[#3F00FF] text-white hover:bg-white hover:text-[#3F00FF] anim-pulse-glow'}`}
                                     >
                                         {isSubmitting ? 'Transmitting...' : 'Transmit Data'}
                                     </button>
@@ -468,7 +470,7 @@ const Contact = () => {
                             {/* Advertisement Form */}
                             {activeTab === 'advertisement' && (
                                 <form className="space-y-6" onSubmit={handleAdSubmit}>
-                                    <div>
+                                    <div className={`${isVisible ? 'anim-fade-in-up stagger-4' : 'anim-hidden'}`}>
                                         <label className="block text-xs font-mono text-indigo-400 uppercase mb-2">Your Name *</label>
                                         <input
                                             type="text"
@@ -480,7 +482,7 @@ const Contact = () => {
                                         />
                                     </div>
 
-                                    <div>
+                                    <div className={`${isVisible ? 'anim-fade-in-up stagger-5' : 'anim-hidden'}`}>
                                         <label className="block text-xs font-mono text-indigo-400 uppercase mb-2">Company Name *</label>
                                         <input
                                             type="text"
@@ -492,7 +494,7 @@ const Contact = () => {
                                         />
                                     </div>
 
-                                    <div>
+                                    <div className={`${isVisible ? 'anim-fade-in-up stagger-6' : 'anim-hidden'}`}>
                                         <label className="block text-xs font-mono text-indigo-400 uppercase mb-2">Ad Duration *</label>
                                         <div className="flex gap-3 items-center">
                                             <div className="flex-1">
@@ -535,7 +537,7 @@ const Contact = () => {
                                         </div>
                                     </div>
 
-                                    <div>
+                                    <div className={`${isVisible ? 'anim-fade-in-up stagger-7' : 'anim-hidden'}`}>
                                         <label className="block text-xs font-mono text-indigo-400 uppercase mb-2">Lip Sync Required *</label>
                                         <div className="flex gap-6">
                                             <label className="flex items-center gap-2 cursor-pointer">
@@ -564,7 +566,7 @@ const Contact = () => {
                                         </div>
                                     </div>
 
-                                    <div>
+                                    <div className={`${isVisible ? 'anim-fade-in-up stagger-7' : 'anim-hidden'}`}>
                                         <label className="block text-xs font-mono text-indigo-400 uppercase mb-2">Email *</label>
                                         <input
                                             type="email"
@@ -576,7 +578,7 @@ const Contact = () => {
                                         />
                                     </div>
 
-                                    <div>
+                                    <div className={`${isVisible ? 'anim-fade-in-up stagger-8' : 'anim-hidden'}`}>
                                         <label className="block text-xs font-mono text-indigo-400 uppercase mb-2">Phone Number *</label>
                                         <input
                                             type="tel"
@@ -591,7 +593,7 @@ const Contact = () => {
                                     <button
                                         type="submit"
                                         disabled={isSubmitting}
-                                        className={`w-full font-black uppercase py-5 text-lg transition-colors tracking-widest ${isSubmitting ? 'bg-zinc-700 text-zinc-400 cursor-not-allowed' : 'bg-[#3F00FF] text-white hover:bg-white hover:text-[#3F00FF]'}`}
+                                        className={`w-full font-black uppercase py-5 text-lg transition-all tracking-widest ${isSubmitting ? 'bg-zinc-700 text-zinc-400 cursor-not-allowed' : 'bg-[#3F00FF] text-white hover:bg-white hover:text-[#3F00FF] anim-pulse-glow'}`}
                                     >
                                         {isSubmitting ? 'Transmitting...' : 'Transmit Data'}
                                     </button>
