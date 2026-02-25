@@ -1,14 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X } from 'lucide-react';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [loaded, setLoaded] = useState(false);
+    const [logoRotation, setLogoRotation] = useState(0);
+    const lastScrollY = useRef(0);
 
     useEffect(() => {
-        const handleScroll = () => setScrolled(window.scrollY > 50);
-        window.addEventListener('scroll', handleScroll);
+        const handleScroll = () => {
+            const currentY = window.scrollY;
+            setScrolled(currentY > 50);
+
+            const delta = currentY - lastScrollY.current;
+            if (delta !== 0) {
+                // Rotate ~0.5 deg per pixel scrolled, direction follows scroll
+                setLogoRotation(prev => prev + delta * 0.5);
+            }
+            lastScrollY.current = currentY;
+        };
+        window.addEventListener('scroll', handleScroll, { passive: true });
 
         // Trigger load animation
         setTimeout(() => setLoaded(true), 100);
@@ -29,7 +41,15 @@ const Navbar = () => {
                 <div className="flex items-center justify-between h-20">
                     {/* Logo with scaleIn */}
                     <div className={`flex-shrink-0 flex items-center gap-3 cursor-pointer ${loaded ? 'anim-scale-in' : 'anim-hidden'}`}>
-                        <img src="/logo.jpg" alt="YouSonic Visions Logo" className="h-12 w-12 object-contain" />
+                        <img
+                            src="/logo.jpg"
+                            alt="YouSonic Visions Logo"
+                            className="h-12 w-12 object-contain"
+                            style={{
+                                transform: `rotate(${logoRotation}deg)`,
+                                transition: 'transform 0.1s linear',
+                            }}
+                        />
                         <span className="font-black text-2xl tracking-tighter text-white uppercase italic">
                             YOUSONIC VISIONS
                         </span>
