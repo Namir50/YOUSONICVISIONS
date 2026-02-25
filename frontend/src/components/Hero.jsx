@@ -130,7 +130,7 @@ const Hero = () => {
 
                 {/* Paragraph - fade in from left */}
                 <p className="mt-4 max-w-2xl mx-auto text-xl md:text-2xl text-zinc-400 font-light mb-12 border-l-4 border-[#3F00FF] pl-6 text-left anim-fade-in-left" style={{ animationDelay: '1.2s' }}>
-                    We use generative engines to build <span className="text-white font-bold">music videos</span> and <span className="text-white font-bold">AI-powered advertisements</span> that cost less and hit harder. No physical cameras. Just tech.
+                    We use generative AI to build <span className="text-white font-bold">music videos</span> and <span className="text-white font-bold">advertisements with catchy script</span> that cost less and hit harder. No physical cameras. Just tech.
                 </p>
 
                 {/* CTA buttons with scaleIn + pulseGlow */}
