@@ -7,6 +7,7 @@ const Portfolio = () => {
     const [ref, isVisible] = useStaggerAnimation();
 
     const projects = [
+        { title: "Demo Video", type: "Brand advertisement", video: "https://www.youtube.com/embed/DFjoz8yBEcI?si=e-Rp1bQy-lhGZG9u" },
         { title: "Demo Video", type: "Full Music Video(HQ)", video: "https://www.youtube.com/embed/zbkYHNqY-qU?si=bsRO943p2FJrsmpY" },
         { title: "Demo Video", type: "Full Music Video(HQ)", video: "https://www.youtube.com/embed/b-BcPMeHMyU?si=B4kGTOwzSMQUKSjS" },
         { title: "Demo Video", type: "Product advertisement", video: "https://www.youtube.com/embed/7VTrQeGy6z8?si=3RiDcusLMm2Yf2Ir" },
